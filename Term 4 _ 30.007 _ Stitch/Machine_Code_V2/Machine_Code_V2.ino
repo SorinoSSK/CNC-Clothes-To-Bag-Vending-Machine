@@ -1,4 +1,4 @@
-include <AccelStepper.h>
+#include <AccelStepper.h>
 #include <MultiStepper.h>
 
 // Stepper Motor Declaration from front perspective 
@@ -16,6 +16,17 @@ AccelStepper BottomLeftXY   (AccelStepper::DRIVER,31,30);
 AccelStepper BottomRightXY  (AccelStepper::DRIVER,29,28);
 AccelStepper BottomZ        (AccelStepper::DRIVER,27,26);
 AccelStepper Bobbin         (AccelStepper::DRIVER,25,24);
+
+// Endstops Pin Declaration
+int ES_Top_X           = 36;
+int ES_Top_Y           = 34;
+int ES_Top_Z           = 32;
+int ES_Bottom_X        = 42;
+int ES_Bottom_Y        = 40;
+int ES_Bottom_Z        = 38;
+int ES_Cutter          = 37;
+int ES_Template_Left   = 33;
+int ES_Template_Right  = 35;
 
 // MaxSpeed Tuning
 int Speed_TopGantry           = 2500;
@@ -55,29 +66,20 @@ int Step_BottomRightXY = 40;
 int Step_BottomZ       = 796;
 int Step_Bobbin        = 1;
 
-// Endstops Declaration
-int ES_Top_X           = 36;
-int ES_Top_Y           = 34;
-int ES_Top_Z           = 32;
-int ES_Bottom_X        = 42;
-int ES_Bottom_Y        = 40;
-int ES_Bottom_Z        = 38;
-int ES_Cutter          = 37;
-int ES_Template_Left   = 33;
-int ES_Template_Right  = 35;
-
 // Calibration Setting/ Offset
 int ESCount[12] = {0,0,0,0,0,0,0,0,0,0,0,0};
 int ESNoOfCount = 4;
 
 // Data Setting
-long positions[6];
-bool TaskAvailable, PrtES = false;
-float L_Val, R_Val = 0.0;
-int Task[6] = {0,0,0,0,0,0}; 
+long positions[6];                          // Stepper Position {TopX, TopY, TopZ, BottomX, BottomY, BottomZ}
+bool TaskAvailable, PrtES = false;          // Checker
+float L_Val, R_Val = 0.0;                   // X and Y movement dissection, Left and Right Motor
+int Task[6] = {0,0,0,0,0,0};                // Store Movement to mvoe information, {TopX, TopY, TopZ, BottomX, BottomY, BottomZ}
+float Coordinates[4] = {0.0,0.0,0.0,0.0};   // Record coordinate {X, Y, TopZ, BottomZ}
 
 // Debugging Only;
-bool Debug = true;
+bool Debug = false;
+
 void setup() 
 {
   Serial.begin(115200);
@@ -228,13 +230,47 @@ void CodeReader(String Val)
   {
     homeY();
   }
+  else if (Val == "HOMEZ")
+  {
+    homeZ();
+  }
+  else if (Val == "HOMEALL")
+  {
+    homeY();
+    homeX();
+    homeZ();
+  }
+  else if (Val == "HOMECUTTER")
+  {
+    homeCutter();
+  }
   else if (Val == "CHECKES")
   {
     PrtES = !PrtES;
   }
-  else if (Val == "HOMEZ")
+  else if (Val == "CUTTERON")
   {
-    homeZ();
+    Cutter.moveTo(100);
+    Cutter.runToPosition();
+  }
+  else if (Val == "CUTTEROFF")
+  {
+    Cutter.moveTo(0);
+    Cutter.runToPosition();
+  }
+  else if (Val == "SEWINGON")
+  {
+    TopZ.moveTo(Step_TopZ*10)
+    TopZ.runToPosition();
+    BottomZ.moveTo(Step_BottomZ*-10)
+    BottomZ.runToPosition();
+  }
+  else if (Val == "SEWINGOFF")
+  {
+    TopZ.moveTo(0)
+    TopZ.runToPosition();
+    BottomZ.moveTo(0)
+    BottomZ.runToPosition();
   }
   else
   {
@@ -392,6 +428,21 @@ void homeZ()
   TopZ.setCurrentPosition(0);
   BottomZ.setCurrentPosition(0);
   Serial.println("Z Homed.");
+}
+
+void homeCutter()
+{
+  Serial.println("Homing Cutter...");
+  bool ValCut = IsCutterClose();
+  long pos = 0;
+  while(!ValCut)
+  {
+    pos -= Step_Cutter;
+    Cutter.moveTo(pos);
+    Cutter.runToPosition();
+  }
+  Cutter.setCurrentPosition(0);
+  Serial.println("Cutter Homed."
 }
 
 void resetXY()
