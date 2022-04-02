@@ -33,7 +33,7 @@ int Speed_TopGantry           = 2500;
 int Speed_TopGantry_Z         = 3500;
 int Speed_BottomGantry        = 2500;
 int Speed_BottomGantry_Z      = 3500;
-int Speed_Sewing              = 2000;
+int Speed_Sewing              = 4000;
 int Speed_Template            = 100;
 int Speed_Cutter_Raise_Lower  = 1000;
 
@@ -48,8 +48,7 @@ int Accel_Cutter_Raise_Lower  = 300;
 
 // MultiStepper Grouping
 MultiStepper stepperGrp;
-MultiStepper stepperTop;
-MultiStepper stepperBtm;
+MultiStepper sewingZ;
 
 // Revolution per mm Tuning
 int Step_TopLeftXY     = 40;
@@ -72,13 +71,15 @@ int ESNoOfCount = 4;
 
 // Data Setting
 long positions[6];                          // Stepper Position {TopX, TopY, TopZ, BottomX, BottomY, BottomZ}
-bool TaskAvailable, PrtES = false;          // Checker
+bool PrtES = false;          // Checker
+String TaskAvailable = ""; 
 float L_Val, R_Val = 0.0;                   // X and Y movement dissection, Left and Right Motor
 int Task[6] = {0,0,0,0,0,0};                // Store Movement to mvoe information, {TopX, TopY, TopZ, BottomX, BottomY, BottomZ}
-float Coordinates[4] = {0.0,0.0,0.0,0.0};   // Record coordinate {X, Y, TopZ, BottomZ}
+int Coordinates[4] = {-9999,-9999,-9999,-9999};   // Record coordinate {X, Y, TopZ, BottomZ}
 
 // Debugging Only;
 bool Debug = false;
+bool PosDebug = true;
 
 void setup() 
 {
@@ -132,12 +133,10 @@ void setup()
 //  stepperGrp.addStepper(Bobbin);
 
   // Add Stepper To Group
-  stepperTop.addStepper(TopLeftXY);
-  stepperTop.addStepper(TopRightXY);
+  sewingZ.addStepper(Needle);
+  sewingZ.addStepper(TopZ);
 
   // Add Stepper To Group
-  stepperBtm.addStepper(BottomLeftXY);
-  stepperBtm.addStepper(BottomRightXY);
   
   // Add EndStop
   pinMode(ES_Top_X, INPUT_PULLUP);
@@ -159,17 +158,11 @@ void loop()
 {
   if (Debug)
   {
-//    StepsBuilder(0,0,0,0,0,Step_TopZ);
-//    stepperGrp.moveTo(positions);
-//    for (int i = 0; i < 6; i ++)
-//    {
-//      Serial.print(positions[i]);
-//      Serial.print(", ");
-//    }
-//    Serial.println("");
-//    stepperGrp.runSpeedToPosition();
-    Cutter.moveTo(-100);
-    Cutter.runToPosition();
+      Serial.println("In Sewing");
+      Bobbin.setCurrentPosition(0);
+      Bobbin.moveTo(200);
+      Bobbin.runToPosition();
+      Debug = false;
   }
   if (PrtES)
   {
@@ -191,29 +184,77 @@ void loop()
     Serial.print(", ");
     Serial.println(IsTemplateRightClose());
   }
-  if(TaskAvailable)
+  if(TaskAvailable != "")
   {
-    CoreXYMovement();    
-    StepsBuilder(Step_TopLeftXY*L_Val,Step_TopRightXY*R_Val,1600*Task[2],Step_BottomLeftXY*L_Val,Step_BottomRightXY*R_Val,0);
-    stepperGrp.moveTo(positions);
-    for (int i = 0; i < 6; i ++)
+    if (TaskAvailable == "Movement")
     {
-      Serial.print(positions[i]);
-      Serial.print(", ");
+      CoreXYMovement();    
+      StepsBuilder(Step_TopLeftXY*L_Val,Step_TopRightXY*R_Val,Step_TopZ*Task[2],Step_BottomLeftXY*L_Val,Step_BottomRightXY*R_Val,0);
+      stepperGrp.moveTo(positions);
+      for (int i = 0; i < 6; i ++)
+      {
+        Serial.print(positions[i]);
+        Serial.print(", ");
+      }
+      Serial.println("");
+      stepperGrp.runSpeedToPosition();
+      for (int i = 0; i < 6; i++)
+      {
+        Task[i] = 0;
+      }
+  //    Serial.write(95478);
+      TaskAvailable = "";
     }
-    Serial.println("");
-    stepperGrp.runSpeedToPosition();
-    for (int i = 0; i < 6; i++)
+    else if (TaskAvailable == "Sewing")
     {
-      Task[i] = 0;
+//      if (Coordinates[2] != 0 || Coordinates[2] != -9999)
+//      {
+//        
+//      }
+      Serial.println("In Sewing");
+      long TempPos[2] = {2, 0};
+      for(int i = 0 ; i < 12; i++)
+      {
+//        TopZ.setCurrentPosition(0);
+//        Needle.setCurrentPosition(0);
+//        long Pos1[2] = {8, long(Step_TopZ)};
+//        sewingZ.moveTo(Pos1);
+//        sewingZ.runSpeedToPosition(); 
+        TopZ.setCurrentPosition(0);
+        TopZ.moveTo(Step_TopZ);
+        TopZ.runToPosition();
+      }
+      Needle.setCurrentPosition(0);
+      Needle.moveTo(100);
+      Needle.runToPosition();
+//      sewingZ.moveTo(TempPos);
+//      sewingZ.runSpeedToPosition(); 
+      Bobbin.setCurrentPosition(0);
+      Bobbin.moveTo(-200);
+      Bobbin.runToPosition();
+      for(int i = 0; i < 12; i++)
+      {
+//        TopZ.setCurrentPosition(0);
+//        Needle.setCurrentPosition(0);
+//        long Temp = Step_TopZ*-1;
+//        long Pos2[2] = {8, long(Temp)};
+//        sewingZ.moveTo(Pos2);
+//        sewingZ.runSpeedToPosition();
+        TopZ.setCurrentPosition(0);
+        TopZ.moveTo(-Step_TopZ);
+        TopZ.runToPosition(); 
+      }
+      Needle.setCurrentPosition(0);
+      Needle.moveTo(100);
+      Needle.runToPosition();
+//      sewingZ.moveTo(TempPos);
+//      sewingZ.runSpeedToPosition();
+      Serial.println("Full Round");
     }
-//    Serial.write(95478);
-    TaskAvailable = false;
   }
   if (Serial.available() > 0)
   {
     CodeReader(Serial.readStringUntil('\r\n'));
-    TaskAvailable = true;
   }
 }
 
@@ -250,7 +291,7 @@ void CodeReader(String Val)
   }
   else if (Val == "CUTTERON")
   {
-    Cutter.moveTo(100);
+    Cutter.moveTo(165);
     Cutter.runToPosition();
   }
   else if (Val == "CUTTEROFF")
@@ -260,34 +301,64 @@ void CodeReader(String Val)
   }
   else if (Val == "SEWINGON")
   {
-    TopZ.moveTo(Step_TopZ*10)
-    TopZ.runToPosition();
-    BottomZ.moveTo(Step_BottomZ*-10)
-    BottomZ.runToPosition();
+    for(int i = 0; i < 27; i++)
+    {
+      StepsBuilder(positions[0],positions[1],long(Step_TopZ),positions[3],positions[4],long(Step_BottomZ*-1));
+      stepperGrp.moveTo(positions);
+      stepperGrp.runSpeedToPosition();
+      TopZ.setCurrentPosition(0);
+      BottomZ.setCurrentPosition(0);
+      Coordinates[2] += i;
+      Coordinates[3] += i;
+    }
+    for(int i = 0; i < 13; i++)
+    {
+      StepsBuilder(positions[0],positions[1],0,positions[3],positions[4],long(Step_BottomZ*-1));
+      stepperGrp.moveTo(positions);
+      stepperGrp.runSpeedToPosition();
+      TopZ.setCurrentPosition(0);
+      BottomZ.setCurrentPosition(0);
+      Coordinates[3] += i;
+    }
+    StepsBuilder(positions[0],positions[1],positions[2],positions[3]+10*Step_BottomLeftXY,positions[4]-10*Step_BottomLeftXY,positions[5]);
+    stepperGrp.moveTo(positions);
+    stepperGrp.runSpeedToPosition();
   }
   else if (Val == "SEWINGOFF")
   {
-    TopZ.moveTo(0)
-    TopZ.runToPosition();
-    BottomZ.moveTo(0)
-    BottomZ.runToPosition();
+    StepsBuilder(positions[0],positions[1],positions[2],positions[3]-10*Step_BottomLeftXY,positions[4]+10*Step_BottomLeftXY,positions[5]);
+    stepperGrp.moveTo(positions);
+    stepperGrp.runSpeedToPosition();
+    homeZ();
+  }
+  else if (Val == "SEWINGACTIVATE")
+  {
+    TaskAvailable = "Sewing";
+  }
+  else if (Val == "SEWINGDEACTIVATE")
+  {
+    TaskAvailable = "";
   }
   else
   {
-    for(int i = 0; i < Val.length(); i ++)
+    if(PosDebug || Coordinates[0] != -9999 || Coordinates[1] != -9999 || Coordinates[2] != -9999 || Coordinates[3] != -9999)
     {
-      if (isSpace(Val[i]) || i == Val.length()-1)
+      for(int i = 0; i < Val.length(); i ++)
       {
-        if (i == Val.length()-1)
+        if (isSpace(Val[i]) || i == Val.length()-1)
+        {
+          if (i == Val.length()-1)
+            BufferCoord += Val[i];
+          TaskStorer(BufferVal, BufferCoord);
+          BufferCoord = "";
+          BufferVal = NULL;
+        }
+        else if (BufferVal == NULL)
+          BufferVal = Val[i];
+        else
           BufferCoord += Val[i];
-        TaskStorer(BufferVal, BufferCoord);
-        BufferCoord = "";
-        BufferVal = NULL;
       }
-      else if (BufferVal == NULL)
-        BufferVal = Val[i];
-      else
-        BufferCoord += Val[i];
+      TaskAvailable = "Movement";
     }
   }
 }
@@ -295,11 +366,22 @@ void CodeReader(String Val)
 void TaskStorer(char BufferVal, String BufferCoord)
 {
   if (BufferVal == 'X')
+  {
     Task[0] = BufferCoord.toInt();
+    Coordinates[0] += Task[0];
+  }
   else if (BufferVal == 'Y')
+  {
     Task[1] = BufferCoord.toInt();
+    Coordinates[1] += Task[1];
+  }
   else if (BufferVal == 'Z')
+  {
     Task[2] = BufferCoord.toInt();
+    Coordinates[2] += Task[2];
+    TopZ.setCurrentPosition(0);
+    BottomZ.setCurrentPosition(0);
+  }
 }
 
 // Build Positions
@@ -326,12 +408,8 @@ void CoreXYMovement()
 {
   if (Task[0] != 0)
   {
-    Serial.println("IN");
-    Serial.println(Task[0]);
-    Serial.println(L_Val);
     L_Val += float(Task[0]);
     R_Val += float(Task[0]);
-    Serial.println(L_Val);
   }
   if (Task[1] != 0)
   {
@@ -354,20 +432,22 @@ void homeX()
     {
       TopPos[0] -= Step_TopLeftXY;
       TopPos[1] -= Step_TopRightXY;
-      stepperTop.moveTo(TopPos);
-      stepperTop.runSpeedToPosition();
     }
     if(!ValBottom)
     {
       BtmPos[0] -= Step_BottomLeftXY;
       BtmPos[1] -= Step_BottomRightXY;
-      stepperBtm.moveTo(BtmPos);
-      stepperBtm.runSpeedToPosition();
     }
+    StepsBuilder(TopPos[0],TopPos[1],positions[2],BtmPos[0],BtmPos[1],positions[5]);
+    stepperGrp.moveTo(positions);
+    stepperGrp.runSpeedToPosition();
     ValTop = IsTopXClose();
     ValBottom = IsBottomXClose();
   }
   resetXY();
+  resetTask();
+  resetPositions();
+  Coordinates[0] = 0;
   Serial.println("X Homed.");
 }
 
@@ -385,20 +465,22 @@ void homeY()
     {
       TopPos[0] += Step_TopLeftXY;
       TopPos[1] -= Step_TopRightXY;
-      stepperTop.moveTo(TopPos);
-      stepperTop.runSpeedToPosition();
     }
     if(!ValBottom)
     {
       BtmPos[0] += Step_BottomLeftXY;
       BtmPos[1] -= Step_BottomRightXY;
-      stepperBtm.moveTo(BtmPos);
-      stepperBtm.runSpeedToPosition();
     }
+    StepsBuilder(TopPos[0],TopPos[1],positions[2],BtmPos[0],BtmPos[1],positions[5]);
+    stepperGrp.moveTo(positions);
+    stepperGrp.runSpeedToPosition();
     ValTop = IsTopYClose();
     ValBottom = IsBottomYClose();
   }
   resetXY();
+  resetTask();
+  resetPositions();
+  Coordinates[1] = 0;
   Serial.println("Y Homed.");
 }
 
@@ -413,20 +495,24 @@ void homeZ()
     if (!ValTop)
     {
       ZPos[0] -= Step_TopZ;
-      TopZ.moveTo(ZPos[0]);
-      TopZ.runToPosition();
     }
     if (!ValBtm)
     {
       ZPos[1] += Step_BottomZ;
-      BottomZ.moveTo(ZPos[1]);
-      BottomZ.runToPosition();
     }
+    StepsBuilder(positions[0],positions[1],ZPos[0],positions[3],positions[4],ZPos[1]);
+    stepperGrp.moveTo(positions);
+    stepperGrp.runSpeedToPosition();
     ValTop = IsTopZClose();
     ValBtm = IsBottomZClose();    
   }
   TopZ.setCurrentPosition(0);
   BottomZ.setCurrentPosition(0);
+  resetTask();
+  positions[2] = 0;
+  positions[5] = 0;
+  Coordinates[2] = 0;
+  Coordinates[3] = 0;
   Serial.println("Z Homed.");
 }
 
@@ -440,9 +526,10 @@ void homeCutter()
     pos -= Step_Cutter;
     Cutter.moveTo(pos);
     Cutter.runToPosition();
+    ValCut = IsCutterClose();
   }
   Cutter.setCurrentPosition(0);
-  Serial.println("Cutter Homed."
+  Serial.println("Cutter Homed.");
 }
 
 void resetXY()
@@ -624,4 +711,20 @@ bool IsTemplateRightClose()
     ESCount[8] = 0;
     return false;
   }  
+}
+
+void resetTask()
+{
+  for (int i = 0; i < 6; i++)
+  {
+    Task[i] = 0;
+  }
+}
+
+void resetPositions()
+{
+  for (int i = 0; i < 6; i++)
+  {
+    positions[i] = 0;
+  }
 }
