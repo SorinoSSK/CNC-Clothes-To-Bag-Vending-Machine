@@ -1,0 +1,14 @@
+Configure Wifi:
+	sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+
+Install PyQT and QML
+	sudo apt-get install python3-pyqt5
+	sudo apt-get install python3-pyqt5.qtquick
+	sudo apt-get install qtdeclarative5-dev
+	sudo apt-get install qml-module-qtquick-controls
+	sudo apt-get install qml-module-qtquick-controls2
+	sudo apt-get install python-serial python3-serial --reinstall
+	sudo apt-get install python3-serial python3-pyqt5 --reinstall
+	sudo apt-get install python3-pyqt5.qtserialport --reinstall
+	sudo apt-get install libqtserialport5 --reinstall
+	sudo apt-get install libqt5serialport5-dev --reinstall
