@@ -29,7 +29,7 @@ int ES_Template_Left   = 33;
 int ES_Template_Right  = 35;
 
 // MaxSpeed Tuning
-int Speed_TopGantry           = 1000;
+int Speed_TopGantry           = 500;
 int Speed_TopGantry_Z         = 1000;
 int Speed_BottomGantry        = 1000;
 int Speed_Sewing              = 1000;
@@ -38,11 +38,11 @@ int Speed_Template            = 100;
 int Speed_Cutter_Raise_Lower  = 1000;
 
 // Acceleration Tuning
-int Accel_TopGantry           = 3500;
-int Accel_TopGantry_Z         = 3500;
-int Accel_BottomGantry        = 3500;
-int Accel_Sewing              = 3500;
-int Accel_Template            = 3500;
+int Accel_TopGantry           = 1000;
+int Accel_TopGantry_Z         = 1000;
+int Accel_BottomGantry        = 1000;
+int Accel_Sewing              = 1000;
+int Accel_Template            = 1000;
 int Accel_Cutter_Raise_Lower  = 300;
 
 // MultiStepper Grouping
@@ -155,8 +155,8 @@ void loop()
 {
   if (TestMode)
   {
-    Cutter.moveTo(100);
-    Cutter.runToPosition();
+    Needle.moveTo(-1000);
+    Needle.runToPosition();
     TestMode = false;
   }
   if (PrintES)
@@ -201,21 +201,27 @@ void loop()
   }
   else if (TaskAvailable == "Stitch" && (NeedleIsDropped || Debug))
   {
+    long SewPos[2] = {-1600, -1600};
     Needle.setCurrentPosition(0);
     Bobbin.setCurrentPosition(0);
-    Needle.moveTo(-900);
+    Needle.moveTo(-1000);
     Needle.runToPosition();
-    for (int i = 0; i < NoOfBobbinLoop; i++)
-    {
-      Bobbin.moveTo(-800);
-      Bobbin.runToPosition();
-      Bobbin.moveTo(0);
-      Bobbin.runToPosition();
-    }
-    Bobbin.moveTo(-1600);
+    Bobbin.moveTo(-400);
     Bobbin.runToPosition();
-    Needle.moveTo(-1600);
-    Needle.runToPosition();
+//    for (int i = 0; i < NoOfBobbinLoop; i++)
+//    {
+//      Bobbin.moveTo(-800);
+//      Bobbin.runToPosition();
+//      Bobbin.moveTo(0);
+//      Bobbin.runToPosition();
+//    }
+    sewingZ.moveTo(SewPos);
+    sewingZ.runSpeedToPosition();
+//    Bobbin.moveTo(-1600);
+//    Bobbin.runToPosition();
+//    Needle.moveTo(-1600);
+//    Needle.runToPosition();
+    TaskAvailable = "";
     if (Sewing && Coordinates[0] >= 95 && Coordinates[0] < 635)
     {
       positions[0] += Step_TopLeftXY*StitchLength/2;
@@ -287,7 +293,7 @@ void CodeReader(String Val)
   {
     lowerCutter();
   }
-  else if (Val == "NEEDLEDROP" || Val == "DROPNEEDLE")
+  else if (Val == "NEEDLEDROP" || Val == "DROPNEEDLE" || Val == "LOWERNEEDLE")
   {
     dropNeedle();
   }
@@ -327,6 +333,14 @@ void CodeReader(String Val)
   {
     TemplateCloseLock();
   }
+  else if (Val == "FASTHOMETOPY")
+  {
+    homeFastTopY();
+  }
+  else if (Val == "FASTHOMETOPX")
+  {
+    homeFastTopX();
+  }
   else if (Val == "RUNTEST" || Val == "TESTRUN")
   {
     TestMode = true;
@@ -354,6 +368,68 @@ void CodeReader(String Val)
     }
     TaskAvailable = "Movement";
   }
+}
+
+void homeFastTopX()
+{
+  // positions[] = {TLeft, TRight, TZ, BLeft, BRight}
+  if (Debug)
+    Serial.println("Fast Homing Top X...");
+  bool ValTop = IsTopXClose();
+  float PosVal = 0;
+  TopLeftXY.setMaxSpeed(4000);
+  TopRightXY.setMaxSpeed(4000);
+  while (!ValTop)
+  {
+    positions[0] -= 0.1*Step_TopLeftXY;
+    positions[1] -= 0.1*Step_TopRightXY;
+    StepsBuilder(positions[0],positions[1],positions[2],positions[3],positions[4]);
+    stepperGrp.moveTo(positions);
+    stepperGrp.runSpeedToPosition();
+    PosVal -= 0.1;
+    ValTop = IsTopXClose();
+  }
+  Coordinates[0] = 0;
+  if (Debug)
+  {
+    Serial.print("Top X Fast Homed. mm moved before home: ");
+    Serial.print(PosVal);
+    Serial.println("mm");
+  }
+  TopLeftXY.setMaxSpeed(Speed_TopGantry);
+  TopRightXY.setMaxSpeed(Speed_TopGantry);
+  displayCoordPos();
+}
+
+void homeFastTopY()
+{
+  // positions[] = {TLeft, TRight, TZ, BLeft, BRight}
+  if (Debug)
+    Serial.println("Fast Homing Top Y...");
+  bool ValTop = IsTopYClose();
+  float PosVal = 0;
+  TopLeftXY.setMaxSpeed(4000);
+  TopRightXY.setMaxSpeed(4000);
+  while (!ValTop)
+  {
+    positions[0] += 0.1*Step_TopLeftXY;
+    positions[1] -= 0.1*Step_TopRightXY;
+    StepsBuilder(positions[0],positions[1],positions[2],positions[3],positions[4]);
+    stepperGrp.moveTo(positions);
+    stepperGrp.runSpeedToPosition();
+    PosVal -= 0.1;
+    ValTop = IsTopYClose();
+  }
+  Coordinates[1] = 0;
+  if (Debug)
+  {
+    Serial.print("Top Y Fast Homed. mm moved before home: ");
+    Serial.print(PosVal);
+    Serial.println("mm");
+  }
+  TopLeftXY.setMaxSpeed(Speed_TopGantry);
+  TopRightXY.setMaxSpeed(Speed_TopGantry);
+  displayCoordPos();
 }
 
 void homeTopX()
@@ -504,7 +580,7 @@ void homeCutter()
 
 void lowerCutter()
 {
-  Cutter.moveTo(800);
+  Cutter.moveTo(900);
   Cutter.runToPosition();
   if (Debug)
     Serial.println("Cutter lowered");
@@ -515,7 +591,7 @@ void dropNeedle()
   if (Coordinates[2] != -9999 || Debug)
   {
     if (Debug)
-      Serial.println("Droping Needle...");
+      Serial.println("Lowering Needle...");
     for(int i = 0; i < 385; i++) //23
     {
       positions[2] += 0.1*Step_TopZ;
