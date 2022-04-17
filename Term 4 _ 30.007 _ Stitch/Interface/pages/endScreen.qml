@@ -24,7 +24,7 @@ Page{
                 id: complete_time
                 interval: 3000; running: true
                 onTriggered: {
-                    end_gif.source = "../assets/instructions/open_template.gif"
+                    end_gif.source = "../assets/open_template.gif"
                     option.visible = true
                 }
             }
@@ -42,7 +42,7 @@ Page{
                 id: thank_time
                 interval: 5000
                 onTriggered: {
-                    btn3.clicks = 0
+                    btn.clicks = 0
                     stackView.replace("splashScreen.qml")
                 }
             }
@@ -58,29 +58,24 @@ Page{
         RowLayout {
             anchors.horizontalCenter: parent.horizontalCenter; anchors.bottom: parent.bottom; anchors.bottomMargin: main.height/10;
             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom;
-            spacing: 20
-
-            Item {
-                id: btn3
-                property var btnWidth: 324
-                property var btnHeight: 52
-                property var clicks: 0
-            }
+            spacing: btn.rSpacing
 
             RoundButton {
-                Layout.preferredWidth: btn3.btnWidth; Layout.preferredHeight: btn3.btnHeight
+                Layout.preferredWidth: btn.btnWidth; Layout.preferredHeight: btn.btnHeight
 
                 Image {
+                    width: btn.btnWidth; height: btn.btnHeight
                     source: "../assets/buttons/buttonYes.png"
                     fillMode: Image.PreserveAspectFit
                 }
 
                 TapHandler {
                     onTapped: {
-                        end_gif.source = "../assets/instructions/open_template_confirm.gif"
-                        btn3.clicks = btn3.clicks + 1
-                        if (btn3.clicks == 2) {
-                            end_gif.source = "../assets/instructions/remove_shirt.gif"
+                        end_gif.source = "../assets/open_template_confirm.gif"
+                        btn.clicks = btn.clicks + 1
+                        if (btn.clicks == 2) {
+                            btn.clicks = 0
+                            end_gif.source = "../assets/remove_shirt.gif"
                             option.visible = false
                             remove_time.start()
                         }
@@ -89,16 +84,18 @@ Page{
             }
 
             RoundButton {
-                Layout.preferredWidth: btn3.btnWidth; Layout.preferredHeight: btn3.btnHeight
+                Layout.preferredWidth: btn.btnWidth; Layout.preferredHeight: btn.btnHeight
 
                 Image {
+                    width: btn.btnWidth; height: btn.btnHeight
                     source: "../assets/buttons/buttonHelp.png"
                     fillMode: Image.PreserveAspectFit
                 }
 
                 TapHandler {
                     onTapped: {
-                        btn3.clicks = 0
+                        end_gif.source = "../assets/open_template.gif"
+                        btn.clicks = 0
                         stackView.push("helpScreen.qml")
                     }
                 }

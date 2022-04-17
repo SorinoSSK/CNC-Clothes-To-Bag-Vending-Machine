@@ -14,28 +14,22 @@ Page{
             anchors.horizontalCenter: parent.horizontalCenter; anchors.verticalCenter: parent.verticalCenter
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter;
             columns: 2
-            rowSpacing: 25; columnSpacing: 50
-
-            Item {
-                id: btn4
-                property var btnWidth: 324*1.5
-                property var btnHeight: 52*1.5
-            }
+            rowSpacing: btn.rSpacing; columnSpacing: btn.cSpacing
 
             Text {
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter;
                 Layout.columnSpan: 2
                 text: "What kind of issues did you face?"
                 font.family: "Helvetica Rounded"
-                font.pointSize: 20
+                font.pointSize: 14
                 color: "white"
             }
 
             RoundButton {
-                Layout.preferredWidth: btn4.btnWidth; Layout.preferredHeight: btn4.btnHeight
+                Layout.preferredWidth: btn.btnWidth / 4 * 5; Layout.preferredHeight: btn.btnHeight / 4 * 5
 
                 Image {
-                    width: btn4.btnWidth; height: btn4.btnHeight
+                    width: btn.btnWidth / 4 * 5; height: btn.btnHeight / 4 * 5
                     source: "../assets/buttons/buttonMinor.png"
                     fillMode: Image.PreserveAspectFit
                 }
@@ -46,10 +40,10 @@ Page{
             }
 
             RoundButton {
-                Layout.preferredWidth: btn4.btnWidth; Layout.preferredHeight: btn4.btnHeight
+                Layout.preferredWidth: btn.btnWidth / 4 * 5; Layout.preferredHeight: btn.btnHeight / 4 * 5
 
                 Image {
-                    width: btn4.btnWidth; height: btn4.btnHeight
+                    width: btn.btnWidth / 4 * 5; height: btn.btnHeight / 4 * 5
                     source: "../assets/buttons/buttonMajor.png"
                     fillMode: Image.PreserveAspectFit
                 }
@@ -60,12 +54,12 @@ Page{
             }
 
             RoundButton {
-                Layout.preferredWidth: btn4.btnWidth/1.5; Layout.preferredHeight: btn4.btnHeight/1.5
+                Layout.preferredWidth: btn.btnWidth; Layout.preferredHeight: btn.btnHeight
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter;
                 Layout.columnSpan: 2
 
                 Image {
-                    width: btn4.btnWidth/1.5; height: btn4.btnHeight/1.5
+                    width: btn.btnWidth; height: btn.btnHeight
                     source: "../assets/buttons/buttonBack.png"
                     fillMode: Image.PreserveAspectFit
                 }

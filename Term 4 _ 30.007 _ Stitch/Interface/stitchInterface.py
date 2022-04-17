@@ -1,6 +1,8 @@
 import sys
+import os
+import PyQt5.QtQuick
 from PyQt5 import QtSerialPort
-from PyQt5.QtCore import QObject, QIODevice, pyqtSignal, pyqtSlot
+from PyQt5.QtCore import QUrl, QObject, QIODevice, pyqtSignal, pyqtSlot
 from PyQt5.QtGui import QGuiApplication
 from PyQt5.QtQml import QQmlApplicationEngine
 
@@ -51,5 +53,7 @@ if __name__ == '__main__':
     context = engine.rootContext()
     context.setContextProperty("con", bridge)
 
-    engine.load('./pages/main.qml')
+    filename = os.path.join(os.path.dirname(__file__), "pages/main.qml")
+    url = QUrl.fromLocalFile(filename)
+    engine.load(url)
     sys.exit(app.exec())

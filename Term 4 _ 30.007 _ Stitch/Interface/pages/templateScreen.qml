@@ -13,7 +13,7 @@ Page{
         AnimatedImage {
             id: closeTemplate_gif
             anchors.horizontalCenter: parent.horizontalCenter
-            source: "../assets/instructions/close_template.gif"
+            source: "../assets/close_template.gif"
             cache: true
             //fillMode: Image.PreserveAspectFit
         }
@@ -26,29 +26,23 @@ Page{
         RowLayout {
             anchors.horizontalCenter: parent.horizontalCenter; anchors.bottom: parent.bottom; anchors.bottomMargin: main.height/10;
             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom;
-            spacing: 28
-
-            Item {
-                id: btn2
-                property var btnWidth: 324/5*4
-                property var btnHeight: 52/5*4
-                property var clicks: 0
-            }
+            spacing: btn.rSpacing
 
             RoundButton {
-                Layout.preferredWidth: btn2.btnWidth; Layout.preferredHeight: btn2.btnHeight
+                Layout.preferredWidth: btn.btnWidthSmall; Layout.preferredHeight: btn.btnHeightSmall
 
                 Image {
-                    width: btn2.btnWidth; height: btn2.btnHeight
+                    width: btn.btnWidthSmall; height: btn.btnHeightSmall
                     source: "../assets/buttons/buttonYes.png"
                     fillMode: Image.PreserveAspectFit
                 }
 
                 TapHandler {
                     onTapped: {
-                        closeTemplate_gif.source = "../assets/instructions/close_template_confirm.gif"
-                        btn2.clicks = btn2.clicks + 1
-                        if (btn2.clicks == 2) {
+                        closeTemplate_gif.source = "../assets/close_template_confirm.gif"
+                        btn.clicks = btn.clicks + 1
+                        if (btn.clicks == 2) {
+                            btn.clicks = 0
                             stackView.replace("sewingScreen.qml")
                         }
                     }
@@ -56,51 +50,52 @@ Page{
             }
 
             RoundButton {
-                Layout.preferredWidth: btn2.btnWidth; Layout.preferredHeight: btn2.btnHeight
+                Layout.preferredWidth: btn.btnWidthSmall; Layout.preferredHeight: btn.btnHeightSmall
 
                 Image {
-                    width: btn2.btnWidth; height: btn2.btnHeight
+                    width: btn.btnWidthSmall; height: btn.btnHeightSmall
                     source: "../assets/buttons/buttonBack.png"
                     fillMode: Image.PreserveAspectFit
                 }
 
                 TapHandler {
                     onTapped: {
-                        btn2.clicks = 0
+                        btn.clicks = 0
                         stackView.replace("placementScreen.qml")
                     }
                 }
             }
 
             RoundButton {
-                Layout.preferredWidth: btn2.btnWidth; Layout.preferredHeight: btn2.btnHeight
+                Layout.preferredWidth: btn.btnWidthSmall; Layout.preferredHeight: btn.btnHeightSmall
 
                 Image {
-                    width: btn2.btnWidth; height: btn2.btnHeight
+                    width: btn.btnWidthSmall; height: btn.btnHeightSmall
                     source: "../assets/buttons/buttonQuit.png"
                     fillMode: Image.PreserveAspectFit
                 }
 
                 TapHandler {
                     onTapped: {
-                        btn2.clicks = 0
+                        btn.clicks = 0
                         stackView.replace("startScreen.qml")
                     }
                 }
             }
 
             RoundButton {
-                Layout.preferredWidth: btn2.btnWidth; Layout.preferredHeight: btn2.btnHeight
+                Layout.preferredWidth: btn.btnWidthSmall; Layout.preferredHeight: btn.btnHeightSmall
 
                 Image {
-                    width: btn2.btnWidth; height: btn2.btnHeight
+                    width: btn.btnWidthSmall; height: btn.btnHeightSmall
                     source: "../assets/buttons/buttonHelp.png"
                     fillMode: Image.PreserveAspectFit
                 }
 
                 TapHandler {
                     onTapped: {
-                        btn2.clicks = 0
+                        closeTemplate_gif.source = "../assets/close_template.gif"
+                        btn.clicks = 0
                         stackView.push("helpScreen.qml")
                     }
                 }
