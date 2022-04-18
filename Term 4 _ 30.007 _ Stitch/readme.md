@@ -3,5 +3,5 @@ Beta versions of the machine is stored as reference as components used in each v
 The latest code version:
 - Arduino: 7.0
 ## Functions in Arduino
-1) IsDoorClose()                  - Check if door is closed.
+1) IsDoorClose()&emsp;- Check if door is closed.
 2) IsTemplateRightClose()
