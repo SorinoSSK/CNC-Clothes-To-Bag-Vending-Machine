@@ -15,7 +15,7 @@ The latest code version:
 | 8 | IsTopYMaxClose() | Check if limitswitch of top gantry's max Y axis is closed. |
 | 9 | IsTopYClose() | Check if limitswitch of top gantry's Y axis is closed. |
 | 10 | IsTopXClose() | Check if limitswitch of top gantry's X axis is closed.  |
-| 11 | signs(double val) | - return 1 if > 0<br />- return -1 if < 0<br />- else return 0 |
+| 11 | signs(double val) | - if > 0, return 1<br />- if < 0, return -1<br />- else return 0 |
 |  |  |  |
 |  |  |  |
 |  |  |  |
