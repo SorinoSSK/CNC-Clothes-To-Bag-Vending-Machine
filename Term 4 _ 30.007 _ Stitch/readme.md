@@ -4,5 +4,5 @@ The latest code version:
 - Arduino: 7.0
 ## Functions in Arduino
 1) IsDoorClose()
-    - Check if door is closed.
+   - Check if door is closed.
 3) IsTemplateRightClose()
