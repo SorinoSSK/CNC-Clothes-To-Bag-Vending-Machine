@@ -1,2 +1,5 @@
-This sections contains test code for STITCH.
-Last version of the code is used for actual production
+# Stitch Machine Program
+Beta versions of the machine is stored as reference as components used in each version differs. 
+The latest code version:
+- Arduino: 7.0
+## Functions
