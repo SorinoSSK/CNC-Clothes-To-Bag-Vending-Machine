@@ -26,7 +26,7 @@ The latest code version:
 | 19 | TaskDissection (char BufferVal, String BufferCoord) | - For manual movement X__ Y__ Z__ Q__ W__ T__ <br />- Dissect serial input into coordinates.|
 | 20 | CoreXYMovement() | Convert coordinates of manual movement to positions read by stepper motors. |
 | 21 | CodeReader (String Val) | Function to dissection serial input. |
-|  |  |  |
+| 22 | safetySwitchChecker() | - Activate only when safety mechanism is activated.<br /> - Constantly check for status of limitswitch of door.<br />Function:<br />1) Pause all function when door's limitswitch is opened and inform Rasberry Pi. <br />2) Unpause all function when door's limitswitch is closed and inform Rasberry Pi.|
 |  |  |  |
 |  |  |  |
 |  |  |  |
