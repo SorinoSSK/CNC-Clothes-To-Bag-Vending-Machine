@@ -15,12 +15,12 @@ The latest code version:
 | 8 | IsTopYMaxClose() | Check if limitswitch of top gantry's max Y axis is closed. |
 | 9 | IsTopYClose() | Check if limitswitch of top gantry's Y axis is closed. |
 | 10 | IsTopXClose() | Check if limitswitch of top gantry's X axis is closed.  |
-| 11 | signs(double val) | - if > 0, return 1<br />- if < 0, return -1<br />- else return 0 |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| 11 | signs(double val) | - if > 0, return 1<br />- if < 0, return -1<br />- else, return 0 |
+| 12 | PIDTemperature() | Compute PID and analogWrite() to heatcartridge. |
+| 13 | readTTemperature() | Reads thermistor and convert to degree celcius. |
+| 14 | setStepperSpeed() | Set speed of all stepper to declared values. |
+| 15 | displayCoordPos() | Display only when debug is set to "true".<br />CoordPos = True: <br />Display all gantry's stepper step position.<br />CoordPos = False:<br /> >Display gantry's coordinates.|
+| 16 | displayLimitSwitch() | constantly display all limitswitches state<br />TopX, TopY, TopYMax, TopZ, BottomX, BottomY, Cutter, Door, LeftTemplate, RightTemplate|
 |  |  |  |
 |  |  |  |
 |  |  |  |
