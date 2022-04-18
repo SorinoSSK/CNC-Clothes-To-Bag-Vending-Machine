@@ -19,9 +19,9 @@ The latest code version:
 | 12 | PIDTemperature() | Compute PID and analogWrite() to heatcartridge. |
 | 13 | readTTemperature() | Reads thermistor and convert to degree celcius. |
 | 14 | setStepperSpeed() | Set speed of all stepper to declared values. |
-| 15 | displayCoordPos() | Display only when debug is set to "true".<br />CoordPos = True: <br />Display all gantry's stepper step position.<br />CoordPos = False:<br /> >Display gantry's coordinates.|
-| 16 | displayLimitSwitch() | constantly display all limitswitches state<br />TopX, TopY, TopYMax, TopZ, BottomX, BottomY, Cutter, Door, LeftTemplate, RightTemplate|
-|  |  |  |
+| 15 | displayCoordPos() | Display only when debug is set to "true".<br />CoordPos = True: <br />Display all gantry's stepper step position.<br />CoordPos = False:<br />Display gantry's coordinates.|
+| 16 | displayLimitSwitch() | Constantly display all limitswitches state<br />( TopX, TopY, TopYMax, TopZ, BottomX, BottomY, Cutter, Door, LeftTemplate, RightTemplate) |
+| 17 | XYZStepsBuilder(long Pos_TopLeftXY, long Pos_TopRightXY, long Pos_TopZ, long Pos_BottomLeftXY, long Pos_BottomRightXY) |  |
 |  |  |  |
 |  |  |  |
 |  |  |  |
