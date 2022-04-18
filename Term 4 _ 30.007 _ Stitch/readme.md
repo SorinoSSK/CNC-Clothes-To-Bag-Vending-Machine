@@ -15,13 +15,13 @@ The latest code version:
 | 8 | IsTopYMaxClose() | Check if limitswitch of top gantry's max Y axis is closed. |
 | 9 | IsTopYClose() | Check if limitswitch of top gantry's Y axis is closed. |
 | 10 | IsTopXClose() | Check if limitswitch of top gantry's X axis is closed.  |
-| 11 | signs(double val) | - if > 0, return 1<br />- if < 0, return -1<br />- else, return 0 |
+| 11 | signs (double val) | - if > 0, return 1<br />- if < 0, return -1<br />- else, return 0 |
 | 12 | PIDTemperature() | Compute PID and analogWrite() to heatcartridge. |
 | 13 | readTTemperature() | Reads thermistor and convert to degree celcius. |
 | 14 | setStepperSpeed() | Set speed of all stepper to declared values. |
 | 15 | displayCoordPos() | Display only when debug is set to "true".<br />CoordPos = True: <br />Display all gantry's stepper step position.<br />CoordPos = False:<br />Display gantry's coordinates.|
 | 16 | displayLimitSwitch() | Constantly display all limitswitches state<br />( TopX, TopY, TopYMax, TopZ, BottomX, BottomY, Cutter, Door, LeftTemplate, RightTemplate) |
-| 17 | XYZStepsBuilder(long Pos_TopLeftXY, long Pos_TopRightXY, long Pos_TopZ, long Pos_BottomLeftXY, long Pos_BottomRightXY) |  |
-|  |  |  |
-|  |  |  |
+| 17 | XYZStepsBuilder<br />(long Pos_TopLeftXY, long Pos_TopRightXY, long Pos_TopZ, long Pos_BottomLeftXY, long Pos_BottomRightXY) | Stores positions of all motors. |
+| 18 | GantryMovement() | Consolidate all gantry's function and moves gantry. Position is recorded in this function. |
+| 19 | TaskDissection(char BufferVal, String BufferCoord) | - For manual movement X__ Y__ Z__ Q__ W__ T__ <br />-Dissect serial input into coordinates.|
 |  |  |  |
