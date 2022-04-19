@@ -49,7 +49,7 @@ Page{
 
                 TapHandler {
                     onTapped: {
-                        stackView.replace("placementScreen.qml")
+                        stackView.replace("initializeScreen.qml")
                     }
                 }
             }

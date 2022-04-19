@@ -6,7 +6,7 @@ import QtQuick.Layouts 1.1
 ApplicationWindow {
     id: main
     visible: true
-    //visibility: "FullScreen"
+    visibility: "FullScreen"
     width: 960; height: 600
     title: "Stitch"
 
@@ -23,15 +23,18 @@ ApplicationWindow {
         
         Timer {
             id: unlock_time
-            interval: 100;
-            onTriggered: con.send("openTemplate")
+            interval: 100; running: true;
+            onTriggered: {
+                con.send("openTemplate")
+                con.send("HomeTopZ")
+            }
         }
     }
 
     StackView {
         id: stackView
 
-        initialItem: "startScreen.qml"
+        initialItem: "splashScreen.qml"
     }
 
     MouseArea {

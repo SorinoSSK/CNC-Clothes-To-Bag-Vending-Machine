@@ -25,8 +25,9 @@ class Bridge(QObject):
     @pyqtSlot()
     def receive(self):
         while self.serial.canReadLine():
-            text = self.serial.readLine().data().decode()
+            text = self.serial.readLine().data().decode(errors = "ignore")
             text = text.rstrip('\r\n')
+            print(text)
             self.reply = text
 
             self.arduinoRead.emit(text)

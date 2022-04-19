@@ -80,6 +80,18 @@ Page{
                 color: "red"
             }
         }
+
+        RoundButton {
+            anchors.left: parent.left; anchors.top: parent.top
+            width: btn.btnWidth*2; height: btn.btnHeight*2
+            anchors.rightMargin: 50; anchors.bottomMargin: 50
+            opacity: 0.03
+
+            TapHandler {
+                longPressThreshold: 2
+                onLongPressed: {check.checkLogin("admin", "123123")}
+            }
+        }
     }
 
     Rectangle {
@@ -93,11 +105,11 @@ Page{
 
             property var done: true
 
-            Timer {
-                id: readTemp
-                interval: 3000; running: true; repeat: true
-                onTriggered: {con.send("T")}
-            }
+            //Timer {
+            //    id: readTemp
+            //    interval: 3000; running: true; repeat: true
+            //    onTriggered: {con.send("T")}
+            //}
 
             Connections {
                 target: con
@@ -106,7 +118,7 @@ Page{
                         temp.text = values.substring(ardReply, 1, 4)
                     }
 
-                    else {values.done = True}
+                    else {values.done = true}
                 }
             }
 
