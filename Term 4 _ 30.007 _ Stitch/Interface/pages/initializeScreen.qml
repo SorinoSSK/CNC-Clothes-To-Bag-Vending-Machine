@@ -31,15 +31,8 @@ Page{
             Connections {
                 target: con
                 onArduinoRead: {
-                    if (ardReply == "95476") {con.send("homeTopY")}
-                    else if (ardReply == "95487") {con.send("homeTopX")}
-                    else if (ardReply == "95486") {con.send("homeTopZ")}
-                    //else if (ardReply == "95490") {con.send("homeBottomX")}
-                    //else if (ardReply == "95488") {con.send("homeBottomY")}
-
-                    //else if (ardReply == "95489") {con.send("q250 w10")}
-                    //else if (ardReply == "95481") {stackView.replace("placementScreen.qml")}
-                    else if (ardReply == "95490") {stackView.replace("placementScreen.qml")}
+                    if (ardReply == "95476") {con.send("homeTop")}
+                    else if (ardReply == "95480") {stackView.replace("placementScreen.qml")}
                 }
             }
         }

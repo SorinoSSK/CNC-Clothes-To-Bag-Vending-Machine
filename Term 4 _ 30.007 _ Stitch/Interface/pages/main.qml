@@ -20,20 +20,19 @@ ApplicationWindow {
 
         property var rSpacing: 20
         property var cSpacing: 40
-        
+
         Timer {
-            id: unlock_time
-            interval: 100; running: true;
-            onTriggered: {
-                con.send("openTemplate")
-                con.send("HomeTopZ")
-            }
+            interval: 50; running: true
+                onTriggered: {con.send("getTemperature")}
+        }
+        
+        Connections {
+            target: con
         }
     }
 
     StackView {
         id: stackView
-
         initialItem: "splashScreen.qml"
     }
 

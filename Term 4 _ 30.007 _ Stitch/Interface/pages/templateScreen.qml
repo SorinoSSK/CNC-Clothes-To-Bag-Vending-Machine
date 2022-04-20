@@ -43,7 +43,7 @@ Page{
                         btn.clicks = btn.clicks + 1
                         if (btn.clicks == 2) {
                             btn.clicks = 0
-                            stackView.replace("sewingScreen.qml")
+                            stackView.replace("doorClose.qml")
                         }
                     }
                 }

@@ -21,8 +21,17 @@ Page{
         Item {
             //Template Locking
             Timer {
-                id: complete_time
+                id: open_door
                 interval: 3000; running: true
+                onTriggered: {
+                    end_gif.source = "../assets/doorOpen.gif"
+                    complete_time.start()
+                }
+            }
+
+            Timer {
+                id: complete_time
+                interval: 3000
                 onTriggered: {
                     end_gif.source = "../assets/open_template.gif"
                     option.visible = true
