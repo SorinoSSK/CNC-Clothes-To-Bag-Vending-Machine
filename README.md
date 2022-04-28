@@ -1,3 +1,3 @@
-# CNC-Clothes-To-Bag-Vending-Machine
+# Stitch - The Clothes-To-Bag Upcycling Machine
 
 test
