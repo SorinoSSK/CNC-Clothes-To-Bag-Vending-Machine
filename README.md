@@ -48,4 +48,5 @@
 <p> Running of the motors is essential for processes such as, but not limited to, the cutting mechanism and movement of the components and they are driven by complex circuitry that is linked to an Arduino. The monitor screen, which displays the GUI, is driven by a Raspberry Pi, that also sends a signal to the Arduino upon user's interactions with it. </p>
 
 <h1> Rendered Machine </h1>
+![image](https://drive.google.com/uc?export=view&id=1MpHRUqCPWpuPNtmx6fPIVL0_ZhADXN1m)
 ![image](https://drive.google.com/uc?export=view&id=1kMghsgw5eNZwSIQWRqALCMxV_T8VrhGI)
