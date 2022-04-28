@@ -32,7 +32,7 @@
 <ul>
   <li> The cutting blade comes in contact with the cutting mat (which is a part of the bottom template) and is moved in a specific direction, cutting the sleeves of the T-shirt in the process.</li>
 </ul>
-A fusion360 demonstration on the cutting mechanism. Note: Dimensions of individual components used in the prototype differ from this demonstration.
+A Fusion360 demonstration on the cutting mechanism. Note: Dimensions of individual components used in the prototype differ from this demonstration.
 <p align = "center">
   <img src="https://drive.google.com/uc?export=view&id=13gT-u9AcO-Po37ijAPjRNDi5tJb9TasK")
 </p>
