@@ -49,4 +49,4 @@
 
 <h1> Rendered Machine </h1>
 
-![image](https://drive.google.com/uc?export=view&id=1kMghsgw5eNZwSIQWRqALCMxV_T8VrhGI)
+![image](https://drive.google.com/file/d/1kMghsgw5eNZwSIQWRqALCMxV_T8VrhGI/preview)
