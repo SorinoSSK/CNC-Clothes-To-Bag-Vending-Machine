@@ -1,4 +1,4 @@
-![image](https://drive.google.com/uc?export=view&id=1ImsEYp1_qpQ6TA1dcmvALb5xkX21r-rf)
+![image](https://github.com/SorinoSSK/CNC-Clothes-To-Bag-Vending-Machine/blob/main/Resources/image%2093%20(2)%201.png)
 # Stitch: The Automated Upcycling Vending-Machine
 <em> A project by Brian Chin Ze Kang, Liu Tonghan, Ernest Ng Wei Jun, Seow Sin Kiat and Teo Wei Qing </em>
 ![image](https://drive.google.com/uc?export=view&id=1BxBwxRedAa_8VpOhNHcsCQkbxKj03Swj)
