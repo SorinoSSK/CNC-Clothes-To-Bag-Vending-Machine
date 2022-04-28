@@ -33,21 +33,20 @@ The latest code version:
 | 20 | PIDTemperature() | Read temperature from thermistor and update PID |
 | 21 | readTTemperature() | Read thermistor and convert to degree C, (Modified from example code) |
 | 22 | setStepperSpeed() | Set speed of all stepper to declared values. |
-| 23 | safetySwitchChecker() | If activated, check if door, IsDoorClose() is close. If door is not close, stop all program. |
-| 24 | homeBottonY() | - |
-| 25 | homeBottomX() | - |
-| 26 | homeTopZ() | - |
-| 27 | homeTopY() | - |
-| 28 | homeTopX() | - |
-| 29 | homeTop() | Home all X, Y, Z axis |
-| 30 | lowerCutter2() | Similar to lowerCutter() but for self-designed circuit board (Designed for Circuits and Electronics module) |
-| 31 | homeCutter2() | Similar to homeCutter() but for self-designed circuit board (Designed for Circuits and Electronics module) |
-| 32 | lowerCutter() | Lower cutter to cutting position |
-| 33 | homeCutter() | Raise cutter to limit switch |
-| 34 | raiseStamp() | Raise hotend after stamping |
-| 35 | lowerStamp() | Pressed hotend onto the shirt. Function will only activate when it is lowered to position and the hotend is hot enough. |
-| 36 | raiseHeatBlock() | Raise hotend all the way up to home position |
-| 37 | lowerHeatBlock() | Lower hotend to position for stamping |
-| 38 | moveVert() | Move sealing mechanism vertically by indicated steps |
-| 39 | backgroundTask() | Function to run every loop |
-| 40 | CodeReader(String Val) | Function to read serial communication and dissect |
+| 23 | homeBottonY() | - |
+| 24 | homeBottomX() | - |
+| 25 | homeTopZ() | - |
+| 26 | homeTopY() | - |
+| 27 | homeTopX() | - |
+| 28 | homeTop() | Home all X, Y, Z axis |
+| 29 | lowerCutter2() | Similar to lowerCutter() but for self-designed circuit board (Designed for Circuits and Electronics module) |
+| 30 | homeCutter2() | Similar to homeCutter() but for self-designed circuit board (Designed for Circuits and Electronics module) |
+| 31 | lowerCutter() | Lower cutter to cutting position |
+| 32 | homeCutter() | Raise cutter to limit switch |
+| 33 | raiseStamp() | Raise hotend after stamping |
+| 34 | lowerStamp() | Pressed hotend onto the shirt. Function will only activate when it is lowered to position and the hotend is hot enough. |
+| 35 | raiseHeatBlock() | Raise hotend all the way up to home position |
+| 36 | lowerHeatBlock() | Lower hotend to position for stamping |
+| 37 | moveVert() | Move sealing mechanism vertically by indicated steps |
+| 38 | backgroundTask() | Function to run every loop |
+| 39 | CodeReader(String Val) | Function to read serial communication and dissect |
