@@ -33,5 +33,15 @@ The cutting component consists of a circular cutting blade that is similarly nav
 </ul>
 
 <h1> Complementary Components </h1>
-<h2> Graphic User Interface </h2>
+<h2> Graphic User Interface (GUI) </h2>
+<p> To allow new users to understand the workings of the machine and to enhance user experience, users will interact the GUI, which will be displayed on a touch-screen monitor. </p>
+<p> Function(s): </p> 
+<ul>
+  <li> Provides clear and concise visual instructions to guide users on the know-hows of using the machine (e.g. how to place their clothes properly).</li>
+  <li> Provides progress updates to let users know the status of the upcycling process.</li>
+  <li> Provides safety warnings (e.g. Please close the door, Stay Clear) to promote safe use of the machine.</li>
+</ul>
 <h2> Circuitry </h2>
+
+![image](https://drive.google.com/uc?export=view&id=1MpHRUqCPWpuPNtmx6fPIVL0_ZhADXN1m)
+<p> Running of the motors is essential for processes such as, but not limited to, the cutting mechanism and movement of the components and they are driven by complex circuitry that is linked to an Arduino. The monitor screen, which displays the GUI, is driven by a Raspberry Pi, that also sends a signal to the Arduino upon user's interactions with it. </p>
