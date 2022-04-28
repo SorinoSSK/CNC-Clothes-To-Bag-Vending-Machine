@@ -4,12 +4,12 @@ However, halfway through the project, the mechanism is abandoned due to design h
 Our group have performed multiple testing and tuning, and we have narrowed it down to three issues. <br />
 1) The needle to hits the bobbin, causing both the needle and bobbin to jam.
 <p align = "center">
-  <img src="https://drive.google.com/uc?export=view&id=1xXII3-RjNpZPt196A_0N55iCjKYt7SJv" width="400" height="600")
+  <img src="https://github.com/SorinoSSK/CNC-Clothes-To-Bag-Vending-Machine/blob/main/Resources/Hook%20Issue%202.gif" width="400" height="550")
 </p>
   
 2) The bobbin is too far from the needle causing the failure to hook the threads from the needle. <br />
 <p align = "center">
-  <img src="https://drive.google.com/uc?export=view&id=1UvGz4_Rr9RQwsJK3VTKWO_zFfRwGe7PR")
+  <img src="https://github.com/SorinoSSK/CNC-Clothes-To-Bag-Vending-Machine/blob/main/Resources/Hook%20Issue%201.gif" width="400" height="550")
 </p>
 
 3) The bobbin hits the needle causing the needle to bend and failure to hook the thread. <br />
