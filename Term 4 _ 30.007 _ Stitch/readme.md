@@ -45,7 +45,7 @@ The latest code version:
 | 32 | homeCutter2() | Similar to homeCutter() but for self-designed circuit board. (Designed for Circuits and Electronics module) |
 | 33 | raiseStamp() | Raise hotend after stamping. |
 | 34 | lowerStamp() | Pressed hotend onto the shirt. Function will only activate when it is lowered to position and the hotend is hot enough. |
-| 35 | raiseHeatBlock() | Raise hotend all the way up to home position<br />Avoid hitting on screw on shirt template. |
+| 35 | raiseHeatBlock() | Raise hotend all the way up to home position to avoid hitting screws on shirt template. |
 | 36 | lowerHeatBlock() | Lower hotend to position for stamping. |
 | 37 | moveVert() | Move sealing mechanism vertically by indicated steps. |
 | 38 | backgroundTask() | Function to run every loop. |
