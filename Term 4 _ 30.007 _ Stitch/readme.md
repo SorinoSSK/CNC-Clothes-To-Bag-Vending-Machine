@@ -2,6 +2,12 @@
 Beta versions of the machine is stored as reference as components used in each version differs.  
 The latest code version:
 - Arduino: 7.0
+## Libraries used in Arduino
+
+#include "ArduPID.h"
+#include <AccelStepper.h>
+#include <MultiStepper.h>
+
 ## Functions in Arduino
 | S/N | Function Name |Description|
 | --- | --- |---|
@@ -27,16 +33,24 @@ The latest code version:
 | 20 | CoreXYMovement() | Convert coordinates of manual movement to positions read by stepper motors. |
 | 21 | CodeReader (String Val) | Function to dissection serial input. |
 | 22 | safetySwitchChecker() | - Activate only when safety mechanism is activated.<br /> - Constantly check for status of limitswitch of door.<br />Function:<br />1) Pause all function when door's limitswitch is opened and inform Rasberry Pi. <br />2) Unpause all function when door's limitswitch is closed and inform Rasberry Pi.|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| 23 | PIDTemperature() | Read temperature from thermistor and update PID |
+| 24 | readTTemperature() | Read thermistor and convert to degree C, (Modified from example code) |
+| 25 | setStepperSpeed() | Initialise all stepper's speed |
+| 26 | safetySwitchChecker() | If activated, check if door, IsDoorClose() is close. If door is not close, stop all program. |
+| 27 | homeBottonY() | - |
+| 28 | homeBottomX() | - |
+| 29 | homeTopZ() | - |
+| 30 | homeTopY() | - |
+| 31 | homeTopX() | - |
+| 32 | homeTop() | Home all X, Y, Z axis |
+| 33 | lowerCutter2() | Similar to lowerCutter() but for self-designed circuit board (Designed for Circuits and Electronics module) |
+| 34 | homeCutter2() | Similar to homeCutter() but for self-designed circuit board (Designed for Circuits and Electronics module) |
+| 35 | lowerCutter() | Lower cutter to cutting position |
+| 36 | homeCutter() | Raise cutter to limit switch |
+| 37 | raiseStamp() | Raise hotend after stamping |
+| 38 | lowerStamp() | Pressed hotend onto the shirt. Function will only activate when it is lowered to position and the hotend is hot enough. |
+| 39 | raiseHeatBlock() | Raise hotend all the way up to home position |
+| 40 | lowerHeatBlock() | Lower hotend to position for stamping |
+| 41 | moveVert() | Move sealing mechanism vertically by indicated steps |
+| 42 | backgroundTask() | Function to run every loop |
+| 43 | CodeReader(String Val) | Function to read serial communication and dissect |
