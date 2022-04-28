@@ -34,9 +34,7 @@
 </ul>
 A fusion360 demonstration on the cutting mechanism. Dimensions used in the prototype differs from this demonstration.
 <p align = "center">
-
-![image](https://drive.google.com/uc?export=view&id=13gT-u9AcO-Po37ijAPjRNDi5tJb9TasK)
-
+  <img src="https://drive.google.com/uc?export=view&id=13gT-u9AcO-Po37ijAPjRNDi5tJb9TasK")
 </p>
 <h1> Complementary Components </h1>
 <h2> Graphic User Interface (GUI) </h2>
