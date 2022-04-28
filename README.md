@@ -51,3 +51,6 @@
 <h1> Rendered Machine Images</h1>
 
 ![image](https://drive.google.com/uc?export=view&id=1kMghsgw5eNZwSIQWRqALCMxV_T8VrhGI)
+
+<h1> Promotional Video </h1>
+<p> Click <a href ="https://vimeo.com/704222319"> here</a> to access our promotional video that showcases the inspiration behind our project and how it works! </p>
