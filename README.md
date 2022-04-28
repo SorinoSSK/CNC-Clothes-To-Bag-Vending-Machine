@@ -33,6 +33,8 @@
   <li> The cutting blade comes in contact with the cutting mat (which is a part of the bottom template) and is moved in a specific direction, cutting the sleeves of the T-shirt in the process.</li>
 </ul>
 
+![image](https://drive.google.com/uc?export=view&id=13gT-u9AcO-Po37ijAPjRNDi5tJb9TasK)
+
 <h1> Complementary Components </h1>
 <h2> Graphic User Interface (GUI) </h2>
 <p> To allow new users to understand the workings of the machine and to enhance user experience, users will interact the GUI, which will be displayed on a touch-screen monitor. </p>
