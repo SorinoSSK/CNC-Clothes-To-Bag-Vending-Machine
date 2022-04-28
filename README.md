@@ -4,4 +4,5 @@
 
 <h1> Components </h1>
 <h2> Template </h2>
+
 <h2> Heating and Cutting Component </h2>
