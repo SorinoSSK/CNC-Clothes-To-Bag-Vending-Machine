@@ -25,8 +25,9 @@
 <h2> Cutting Component </h2>
 
 ![image](https://drive.google.com/uc?export=view&id=16TgCo6NQEomHscDqxrPMi_1ta9RFmpU2)
+
 <p align = "center"><em> A. Cutting Blade   B. T-shirt   C. Cutting Mat</em></p>
-The cutting component consists of a circular cutting blade that is similarly navigated around the sleeves region of T-shirt with the assistance of the CoreXY gantry.
+<p> The cutting component consists of a circular cutting blade that is similarly navigated around the sleeves region of T-shirt with the assistance of the CoreXY gantry.
 <p> Function(s): </p> 
 <ul>
   <li> The cutting blade comes in contact with the cutting mat (which is a part of the bottom template) and is moved in a specific direction, cutting the sleeves of the T-shirt in the process.</li>
