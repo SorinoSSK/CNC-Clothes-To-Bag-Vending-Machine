@@ -8,7 +8,7 @@ The latest code version:
 #include <AccelStepper.h><br />
 #include <MultiStepper.h><br />
 
-## Functions in Arduino
+## Functions in Arduino (Operation of bottom gantry is ceased.)
 | S/N | Function Name |Description|
 | --- | --- |---|
 | 1 | IsDoorClose() | Check if limitswitch of door is closed. |
@@ -30,23 +30,23 @@ The latest code version:
 | 17 | CoreXYMovement() | Convert coordinates of manual movement to positions read by stepper motors. |
 | 18 | CodeReader (String Val) | Function to dissection serial input. |
 | 19 | safetySwitchChecker() | - Activate only when safety mechanism is activated.<br /> - Constantly check for status of limitswitch of door.<br />Function:<br />1) Pause all function when door's limitswitch is opened and inform Rasberry Pi. <br />2) Unpause all function when door's limitswitch is closed and inform Rasberry Pi.|
-| 20 | PIDTemperature() | Read temperature from thermistor and update PID |
-| 21 | readTTemperature() | Read thermistor and convert to degree C, (Modified from example code) |
+| 20 | PIDTemperature() | Read temperature from thermistor and update PID. |
+| 21 | readTTemperature() | Read thermistor and convert to degree C. (Modified from example code) |
 | 22 | setStepperSpeed() | Set speed of all stepper to declared values. |
-| 23 | homeBottonY() | - |
-| 24 | homeBottomX() | - |
-| 25 | homeTopZ() | - |
-| 26 | homeTopY() | - |
-| 27 | homeTopX() | - |
-| 28 | homeTop() | Home all X, Y, Z axis |
-| 29 | lowerCutter2() | Similar to lowerCutter() but for self-designed circuit board (Designed for Circuits and Electronics module) |
-| 30 | homeCutter2() | Similar to homeCutter() but for self-designed circuit board (Designed for Circuits and Electronics module) |
-| 31 | lowerCutter() | Lower cutter to cutting position |
-| 32 | homeCutter() | Raise cutter to limit switch |
-| 33 | raiseStamp() | Raise hotend after stamping |
+| 23 | homeBottonY() | home Y of buttom gantry. |
+| 24 | homeBottomX() | home X of buttom gantry. |
+| 25 | homeTopZ() | home Z of top gantry. |
+| 26 | homeTopY() | home Y of top gantry. |
+| 27 | homeTopX() | home X of top gantry. |
+| 28 | homeTop() | Home X, Y, Z axis of top gantry. |
+| 29 | lowerCutter() | Lower cutter to cutting position. |
+| 30 | homeCutter() | Raise cutter to limit switch. |
+| 31 | lowerCutter2() | Similar to lowerCutter() but for self-designed circuit board. (Designed for Circuits and Electronics module) |
+| 32 | homeCutter2() | Similar to homeCutter() but for self-designed circuit board. (Designed for Circuits and Electronics module) |
+| 33 | raiseStamp() | Raise hotend after stamping. |
 | 34 | lowerStamp() | Pressed hotend onto the shirt. Function will only activate when it is lowered to position and the hotend is hot enough. |
-| 35 | raiseHeatBlock() | Raise hotend all the way up to home position |
-| 36 | lowerHeatBlock() | Lower hotend to position for stamping |
-| 37 | moveVert() | Move sealing mechanism vertically by indicated steps |
-| 38 | backgroundTask() | Function to run every loop |
-| 39 | CodeReader(String Val) | Function to read serial communication and dissect |
+| 35 | raiseHeatBlock() | Raise hotend all the way up to home position<br />Avoid hitting on screw on shirt template. |
+| 36 | lowerHeatBlock() | Lower hotend to position for stamping. |
+| 37 | moveVert() | Move sealing mechanism vertically by indicated steps. |
+| 38 | backgroundTask() | Function to run every loop. |
+| 39 | CodeReader(String Val) | Function to read serial communication and dissect task<br />-e.g. commands used in this machine. |
