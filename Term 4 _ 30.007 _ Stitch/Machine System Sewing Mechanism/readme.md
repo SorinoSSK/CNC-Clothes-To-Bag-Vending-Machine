@@ -1,6 +1,6 @@
 ## Decoupled CNC sewing mechanism
-The team proposed the decoupled CNC sewing mechanism to undertake fabric sealing for the project initially, and it was constructed using an old mini sewing machine.
-However, halfway through the project, the mechanism is abandoned due to design hiccups of the gantry. Sewing with a sewing machine requires precise needle and bobbin alignment, which the gantry mechanism could not deliver. <br />
+Initially, the team proposed a decoupled CNC sewing mechanism to undertake fabric sealing and it was constructed using components of an old mini sewing machine.
+However, halfway through the project, the mechanism was abandoned due to design hiccups and limitations of the gantry. Sewing with a sewing machine components requires precise needle and bobbin alignment, which the gantry mechanism could not deliver. <br />
 Our group have performed multiple testing and tuning, and we have narrowed it down to three issues. <br />
 1) The needle to hits the bobbin, causing both the needle and bobbin to jam.
 <p align = "center">
