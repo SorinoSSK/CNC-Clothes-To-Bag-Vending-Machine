@@ -7,11 +7,12 @@
 ![image](https://github.com/SorinoSSK/CNC-Clothes-To-Bag-Vending-Machine/blob/main/Resources/image%2093%20(3).png)
 <h1> Components </h1>
 <h2> Template </h2>
-<p> Being a component which users interact with the most, the materials of the template have been carefully selected and the template has been carefully designed in order to ensure safety and usability. Users are required to open the top template, place their T-shirts on the bottom templat and and close the template in order for the whole process to begin. </p>
+![image](https://github.com/SorinoSSK/CNC-Clothes-To-Bag-Vending-Machine/blob/b7cfc2e2972edc69ef9a48a65f9acf0a04af40ba/Resources/T1.png)
+<p> Being the component which users interact with the most, the materials of the template have been carefully selected and the template has been carefully designed in order to ensure safety and usability. Users are required to open the top template, place their T-shirts on the bottom template and and close the template in order for the whole process to begin. </p>
 <p> Function(s): </p> 
 <ul>
-  <li> Serves as a mean to compress the T-shirt and provide stability in order to faciliate in the cutting and heating mechanism</li>
-  <li> Coloured guidelines are provided at the (bottom) template to assist users in placing their used textiles in the correct manner.</li>
+  <li> Serves as a mean to compress the T-shirt and provide stability in order to faciliate in the cutting and heating mechanisms</li>
+  <li> Coloured guidelines are provided on the (bottom) template to assist users in placing their used textiles in the correct manner.</li>
 </ul>
 <h2> Heating Component </h2>
 
