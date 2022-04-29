@@ -7,7 +7,7 @@
 ![image](https://github.com/SorinoSSK/CNC-Clothes-To-Bag-Vending-Machine/blob/main/Resources/image%2093%20(3).png)
 <h1> Components </h1>
 <h2> Template </h2>
-![image](https://github.com/SorinoSSK/CNC-Clothes-To-Bag-Vending-Machine/blob/b7cfc2e2972edc69ef9a48a65f9acf0a04af40ba/Resources/T1.png)
+![image](https://github.com/SorinoSSK/CNC-Clothes-To-Bag-Vending-Machine/blob/main/Resources/T1.png)
 <p> Being the component which users interact with the most, the materials of the template have been carefully selected and the template has been carefully designed in order to ensure safety and usability. Users are required to open the top template, place their T-shirts on the bottom template and and close the template in order for the whole process to begin. </p>
 <p> Function(s): </p> 
 <ul>
