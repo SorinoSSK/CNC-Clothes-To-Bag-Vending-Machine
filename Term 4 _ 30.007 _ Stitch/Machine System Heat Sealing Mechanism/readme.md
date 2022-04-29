@@ -2,7 +2,7 @@
 This prototype was used as submission for 30.007 module due to it's success in binding fabric together and time constraint.
 
 Our proposed heat sealing mechanism has 2 requirements:
-1) iron-on tape (purchased from iKea)
+1) iron-on tape (purchased from IKEA)
 2) ironing with heatblock at 200°C
 
 # Heat sealing experimentation
