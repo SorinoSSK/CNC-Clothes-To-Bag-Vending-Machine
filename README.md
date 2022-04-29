@@ -6,7 +6,7 @@
 
 ![image](https://github.com/SorinoSSK/CNC-Clothes-To-Bag-Vending-Machine/blob/main/Resources/image%2093%20(3).png)
 
-The files on this github contain more information about our experimentation.
+The **files on this github** contain more information about our experimentation.
 <h1> Components </h1>
 <h2> Template </h2>
 
