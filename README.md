@@ -3,7 +3,7 @@
 The **files on this github** contain more information about our experimentation. <br />
 <em> A project by Brian Chin Ze Kang, Liu Tonghan, Ernest Ng Wei Jun, Seow Sin Kiat and Teo Wei Qing </em>
 ![image](https://github.com/SorinoSSK/CNC-Clothes-To-Bag-Vending-Machine/blob/main/Resources/image%2096.png)
-<p> Given the prevalence of the issue of textile wastes (as a result consumerism) and the decline in textile recycling recycling efforts, we seeked to tackle the issue through the invention of Stitch - the very first upcycling machine that is able to convert used textiles into resuable bags. Stitch comprises of 3 main components, namely the template and the heating component and the cutting component. Both components are supplemented by other components such as the Graphic User Interface (GUI) and circuitry.</p>
+<p> Given the prevalence of the issue of textile wastes (as a result consumerism) and the decline in textile recycling recycling efforts, we sought to tackle the issue through the invention of Stitch - the very first upcycling machine that is able to convert used textiles into reusable bags. Stitch comprises of 3 main components, namely the template and the heating component and the cutting component. Both components are supplemented by other components such as the Graphic User Interface (GUI) and circuitry.</p>
 
 ![image](https://github.com/SorinoSSK/CNC-Clothes-To-Bag-Vending-Machine/blob/main/Resources/image%2093%20(3).png)
 
